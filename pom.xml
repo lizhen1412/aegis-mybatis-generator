@@ -28,23 +28,79 @@
     </scm>
     <properties>
         <java.version>23</java.version>
+        <mybatis.version>3.5.9</mybatis.version>
+        <freemarker.version>2.3.33</freemarker.version>
+        <mysql.version>8.0.28</mysql.version>
+        <slf4j.version>2.0.16</slf4j.version>
     </properties>
     <dependencies>
+        <!-- 该依赖项引入了Spring Boot Web模块，用于创建基于Spring Boot的Web应用程序 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- 该依赖项引入了Lombok，用于简化Java代码编写 -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis.version}</version>
         </dependency>
+
+        <!-- 该依赖项用于引入FreeMarker模板引擎 -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>${freemarker.version}</version>
+        </dependency>
+
+        <!--
+        引入MyBatis-Plus代码生成器依赖，用于快速开发数据库层代码。
+        MyBatis-Plus是一个增强版的MyBatis，简化了MyBatis的使用流程，提供了更多开箱即用的功能。
+        该依赖主要用于项目中进行代码生成，能够根据数据库表结构自动生成Mapper、Service、Controller等层次的代码，
+        大幅提升开发效率，特别是在项目初期或者表结构较为复杂的场景下。
+
+        groupId: com.baomidou - 指定MyBatis-Plus的组织ID。
+        artifactId: mybatis-plus-generator - 指定引入的依赖是MyBatis-Plus的代码生成器。
+        version: 3.5.9 - 指定所使用的MyBatis-Plus代码生成器的版本号。
+        -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+
+        <!-- MySQL数据库驱动依赖 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
+        <!--
+        依赖SLF4J（Simple Logging Facade for Java）API，版本为2.0.16
+        此依赖提供了日志记录的接口，允许在底层使用不同的日志实现（如logback，log4j等）
+        通过依赖此API，可以确保日志记录的灵活性和可配置性
+        -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <!-- 依赖项配置 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
